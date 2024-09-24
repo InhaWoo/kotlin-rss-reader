@@ -15,4 +15,5 @@ fun main() {
     val latestFeeds = channel.toItemList()
 
     controller.showLatestFeeds(latestFeeds)
+    controller.searchList(latestFeeds)
 }

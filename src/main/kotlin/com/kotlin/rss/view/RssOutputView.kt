@@ -15,4 +15,8 @@ class RssOutputView {
         println(feedsDto)
     }
 
+    fun printSearchMessage() {
+        println("검색어를 입력하세요")
+    }
+
 }
