@@ -16,7 +16,7 @@ fun main() {
                 val channel = getChannel()
                 latestFeeds = channel.toItemList()
                 controller.showLatestFeeds(latestFeeds)
-                delay(Duration.parse("10m"))
+                delay(Duration.parse("5s"))
             }
         }
         launch {
