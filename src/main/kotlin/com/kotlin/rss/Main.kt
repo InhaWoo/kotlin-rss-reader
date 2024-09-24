@@ -13,13 +13,15 @@ fun main() {
         var latestFeeds: List<Item> = listOf()
         launch {
             while (true) {
+                println("${Thread.currentThread().name} while문 반복중")
                 val channel = getChannel()
                 latestFeeds = channel.toItemList()
                 controller.showLatestFeeds(latestFeeds)
                 delay(Duration.parse("5s"))
             }
         }
-        launch {
+        launch(Dispatchers.IO) {
+            println("${Thread.currentThread().name} 검색어 입력기다리는중")
             controller.searchList(latestFeeds)
         }
     }
