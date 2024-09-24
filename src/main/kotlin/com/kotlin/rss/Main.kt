@@ -16,9 +16,13 @@ fun main() {
             while (true) {
                 println("${Thread.currentThread().name} while문 반복중")
                 val channel = getChannel()
-                val latestFeeds = itemMemory.items
-                controller.showLatestFeeds(latestFeeds)
-                delay(Duration.parse("5s"))
+                if (itemMemory.addAll(channel.toItemList())) {
+                    println("새 글 추가됐음")
+
+                    val latestFeeds = itemMemory.items
+                    controller.showLatestFeeds(latestFeeds)
+                }
+                delay(Duration.parse("10s"))
             }
         }
         launch(Dispatchers.IO) {
