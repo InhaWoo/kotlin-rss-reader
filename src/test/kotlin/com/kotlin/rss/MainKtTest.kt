@@ -12,7 +12,6 @@ class MainKtTest {
         val xml = factory.newDocumentBuilder()
             .parse("https://techblog.woowahan.com/feed")
         val channel = xml.getElementsByTagName("channel").item(0)
-        println(channel.attributes.item(0))
         val itemList = channel.toItemList()
 
         assertThat(itemList).isNotEmpty
