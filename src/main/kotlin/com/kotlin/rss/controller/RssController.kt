@@ -11,14 +11,14 @@ class RssController(
 ) {
 
     fun showLatestFeeds(latestFeeds: List<Item>) {
-        outputView.printLatestFeed(latestFeeds)
+        outputView.printLatestFeed(Items(latestFeeds).page(10).items)
     }
 
     fun searchList(feeds: List<Item>) {
         outputView.printSearchMessage()
         val keyword = inputView.getInput()
-        val items = Items(feeds).search(keyword)
-        outputView.printLatestFeed(items.items)
+        val items = Items(feeds).search(keyword).page(10).items
+        outputView.printLatestFeed(items)
     }
 
 }

@@ -6,4 +6,10 @@ data class Items(val items: List<Item>) {
             items.filter { it.title.contains(keyword) }
         )
     }
+
+    fun page(size: Int): Items {
+        return Items(
+            items.sortedByDescending { it.pubDate }
+            .take(size))
+    }
 }
