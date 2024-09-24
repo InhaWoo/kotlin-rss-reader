@@ -29,5 +29,24 @@ class ItemMemoryTest {
         assertThat(itemMemory.items).isEqualTo(items)
     }
 
+    @Test
+    fun `중복된 아이템은 추가되지 않는다`() {
+        val item = Item("title", "link", "description", OffsetDateTime.now())
+        val itemMemory = ItemMemory(mutableListOf(item))
 
+        itemMemory.add(item)
+
+        assertThat(itemMemory.items).hasSize(1)
+    }
+
+    @Test
+    fun `중복된 아이템들은 추가되지 않는다`() {
+        val item = Item("title", "link", "description", OffsetDateTime.now())
+        val itemMemory = ItemMemory(mutableListOf(item))
+        val items = Items(listOf(item))
+
+        itemMemory.addAll(items)
+
+        assertThat(itemMemory.items).hasSize(1)
+    }
 }
